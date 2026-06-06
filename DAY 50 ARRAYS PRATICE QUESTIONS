@@ -1,0 +1,48 @@
+_________________________________________Linear Search & Array Traversal______________________________________________________________
+
+1.Two Sum
+def two_sum(a,target):
+    for i in range(len(a)):
+        for j in range(i+1,len(a)):
+            if a[i]+a[j]==target:
+                return (i,j)
+    return -1
+def main():
+    a=[1,2,3,4,5]
+    target=9
+    print(two_sum(a,target))
+if __name__=='__main__':
+    main()
+                
+2.Find Numbers with Even Number of Digits.
+class Solutions():
+    def even_digit(self,a):
+        count=0
+        for i in range(len(a)):
+            if len(str(a[i]))%2==0:
+                count+=1
+        return count
+def main():
+    a=[12,2,3,4,5]
+    obj=Solutions()
+    print(obj.even_digit(a))
+if __name__=='__main__':
+    main()
+
+
+3.Check if N and Its Double Exist.
+class solutions():
+    def thirdMax(self,num):
+        num=list(set(nums))
+        nums.sort()
+    if len(nums)>=3:
+        return nums[-3]
+    return nums[-1]
+    
+4.Richest Customer Wealth.  
+5.Kids With the Greatest Number of Candies.
+6.Number of Good Pairs.
+7.Running Sum of 1D Array.
+8.Shuffle the Array.
+9.Concatenation of Array. 
+10.Build Array from Permutation.
