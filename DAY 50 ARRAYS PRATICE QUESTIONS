@@ -39,10 +39,53 @@ class solutions():
         return nums[-3]
     return nums[-1]
     
-4.Richest Customer Wealth.  
+4.Richest Customer Wealth. 
+class rich_customer:
+       def rich(self,a):
+           max=0
+           for i in range(len(a)):
+               total=0
+               for j in range(len(a[i])):
+                   total+=a[i][j]
+               if total>max:
+                    max=total
+           return max
+r=rich_customer()
+print(r.rich([[1,2,3,4],[3,4,5]]))
 5.Kids With the Greatest Number of Candies.
+class Solutions:
+    def kids_candies(self,a):
+        max=0
+        for i in range(len(a)):
+            if a[i]>max:
+                max=a[i]
+        return max
+s=Solutions()
+print(s.kids_candies([12,13,4,43]))
+
 6.Number of Good Pairs.
+class Solutions:
+    def Good_pairs(self,a):
+        pairs=[]
+        for i in range(len(a)):
+            for j in range(i+1,len(a)):
+                if a[i]==a[j]:
+                     pairs.append((i,j))#we used paairs .appaend to get all good pairs instead of return (i,j)
+        return pairs
+s=Solutions()
+print(s.Good_pairs([1,2,3,3,4,1]))
+
 7.Running Sum of 1D Array.
+class Solutions:
+    def Runing_Sum(self,a):
+        total=0
+        result=[]
+        for i in range(len(a)):
+             total+=a[i]
+             result.append(total)
+        return result
+s=Solutions()
+print(s.Runing_Sum([1,2,3,4]))
 8.Shuffle the Array.
 9.Concatenation of Array. 
 10.Build Array from Permutation.
