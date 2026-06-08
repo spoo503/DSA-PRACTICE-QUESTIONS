@@ -1,4 +1,4 @@
--------------------------------------------BINARY SEARCH------------------------------------------------------------------------------
+1.-------------------------------------------BINARY SEARCH------------------------------------------------------------------------------
 class Solution:
     def binary_search(self,a):
         l,h,mid=0,len(a)-1,0
@@ -14,4 +14,95 @@ class Solution:
         return -1
 s=Solution()
 print(s.binary_search([12,13,14,15,56]))
---------------------------------------------
+2.--------------------------------------------SEARCH-INSERTION-------------------------------------------------------------------------------
+class Solution:
+    def search_insertion(self,a):
+        l,h,mid=0,len(a)-1,0
+        target=56
+        while(l<=h):
+            mid=(l+h)//2
+            if target==a[mid]:
+                return mid
+            elif  target<a[mid]:
+                h=mid-1
+            else:
+                l=mid+1
+        a.insert(l,target)
+        return a
+s=Solution()
+print(s.search_insertion([12,13,45,67,78]))
+#l=0,h=4,m=2---45
+#l=3,h=4,m=3---67
+#l=4,h=4,m=4---78
+#l=5,h=4,m=0---12----out of the loop
+
+3.---------------------------------------------------------------------------------------------------------------------------------------------
+Find Peak Element.
+class  Solution:
+    def peak_Element(self,a):
+        l,h,m=0,len(a)-1,0
+        target =82
+        while(l<=h):
+            m=(l+h)//2
+            if a[m]>a[m+1] and a[m]>a[m-1]:
+                return m
+            elif a[m>a[m+1] and a[m]<am[m-1]:
+                l=m+1
+            else:
+                h=m-1
+        a.insert(l,target)
+        return a
+s=Solution()
+print(s.peak_Element([9,89,65,43,32]))
+#l=0,h=4,m=2---65 as 82>65 
+#l=3,h=4 ,m=3---89
+#l=4,h=4,m=4
+        
+4.Valid Perfect Square
+5.Sqrt(x)
+------------------------------------------------------------Medium--------------------------------------------------------------------------
+6.-------------------------------------Find First and Last Position of Element in Sorted Array----------------------------------------------------
+class Solution:
+    def first_last(self,a):
+        l,h,m=0,len(a)-1,0
+        target=4
+        res =[-1,-1]
+        while(l<=h):
+            m=(l+h)//2
+            if target==a[m]:
+                res[0]=m
+                h=m-1
+            elif target<a[m]:
+                l=m+1
+            else:
+                l=m+1
+        return res
+        l,h,m=0,len(a)-1,0
+        while(l<=h):
+            m=(l+h)//2
+            if target==a[m]:
+                res[1]=m
+                l=m+1
+            elif target<a[m]:
+                l=m+1
+            else:
+                h=m-1
+        return res
+s=Solution()
+print(s.first_last([3,4,4,4,4,4,4,4,4,6]))
+#l=0,h=8,m=4 -4     0,1,2,3,4,5,6,7,8,9
+#l=0,h=3,m=1-4
+#l=0,h=0,m=0-3
+#l=1 ,h=0,m---out of the loop
+#last number
+#l=o,h=8,m=4--4
+#l=5,h=8,m=6--4
+#l=7,h=8,m=7--4
+#l=8,h=8,m=8--4
+#l=9,h=8,m=8 ---out of the loop
+# so result would be 1,8
+7.--------------------------------------------------------Search in Rotated Sorted Array----------------------------------------------------
+
+8.Search a 2D Matrix
+9.Peak Index in a Mountain Array
+10.Koko Eating Bananas
