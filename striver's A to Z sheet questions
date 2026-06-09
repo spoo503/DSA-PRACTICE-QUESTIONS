@@ -1,0 +1,189 @@
+##1.Complete the function printNumber which takes an integer input from the user and prints it on the screen.
+class Solution:
+    def printNumber(self):
+        n=int(input())
+        print(n)
+
+
+2.Given marks of a student, print on the screen:
+
+Grade A if marks >= 90
+Grade B if marks >= 70
+Grade C if marks >= 50
+Grade D if marks >= 35
+Fail, otherwise.
+
+class Solution:
+    def studentGrade(self, marks):
+        if marks >=90:
+            print("Grade A")
+        elif marks>=70:
+            print("Grade B")
+        elif marks >=50:
+            print("Grade C")
+        elif marks>=35:
+            print("Grade D")
+        else:
+            print("Fail")
+3.Given the integer day denoting the day number, print on the screen which day of the week it is. Week starts from Monday and for values greater than 7 or less than 1, print Invalid.
+
+Ensure only the 1st letter of the answer is capitalised.
+
+class Solution:
+    def whichWeekDay(self, day):
+            if day==1:
+                print("Monday")
+            elif day==2:
+                print("Tuesday")
+            elif day==3:
+                print("Wednesday")
+            elif day==4:
+                print("Thursday")
+            elif  day==5:
+                print("Friday")
+            elif day==6:
+                print("Saturday")
+            elif day==6:
+                print("Sunday")
+            else:
+ Given two integers low and high, return the sum of all integers from low to high inclusive.
+
+
+Example 1
+
+Input: low = 1, high = 5
+
+Output: 15
+
+Explanation: 1 + 2 + 3 + 4 + 5 = 15               print("Invalid")
+class Solution:
+    def integer(self,low,high):
+        Sum=0
+        for i in range(low,high+1):
+            Sum+=i
+        print(Sum)
+Given a digit d (0 to 9), find the sum of the first 50 positive integers (integers > 0) that end with digit d.
+
+
+
+A number ends with digit d if its last digit is d.
+
+
+Example 1
+
+Input: d = 1
+
+Output: 12300
+
+Explanation:
+
+The first 50 positive integers ending with 1 are: 1, 11, 21, 31, ..., 491
+
+Their sum is 12300.
+
+class Solution:
+    def whileLoop(self, d):
+
+        Sum = 0
+        num = d
+
+        for i in range(50):
+            Sum += num
+            num += 10
+
+        return Sum
+
+Given an array arr of n elements. The task is to reverse the given array. The reversal of array should be inplace.
+class Solution:
+    def reverse(self, arr):
+
+        l = 0
+        h = len(arr) - 1
+
+        while l < h:
+
+            arr[l], arr[h] = arr[h], arr[l]
+
+            l += 1
+            h -= 1
+
+        return arr
+Subscribe to TUF+
+
+Hints
+Company
+Given an integer n. You need to recreate the pattern given below for any value of N. Let's say for N = 5, the pattern should look like as below:
+
+
+
+*****
+
+*****
+
+*****
+
+*****
+
+*****
+
+
+class Solution:
+    def pattern1(self, n):
+        for i in range(n+1):
+            print("*"*n)
+Given an integer n. You need to recreate the pattern given below for any value of N. Let's say for N = 5, the pattern should look like as below:
+
+
+
+*
+
+**
+
+***
+
+****
+class Solution:
+    def pattern2(self, n):
+        for i in range(n):
+            print("*"*i)
+s=Solution()
+print(s.pattern2(5))
+
+Given an integer n. You need to recreate the pattern given below for any value of N. Let's say for N = 5, the pattern should look like as below:
+
+
+
+1
+
+12
+
+123
+
+1234
+
+12345
+class Solution:
+    def pattern3(self, n):
+        for i in range(1, n+1):
+            for j in range(1, i+1):
+                print(j, end=" ")
+            print()
+Given an integer n. You need to recreate the pattern given below for any value of N. Let's say for N = 5, the pattern should look like as below:
+
+
+
+1
+
+22
+
+333
+
+4444
+
+55555
+
+
+class Solution:
+    def pattern4(self, n):
+        for i in range(1,n+1):
+            print(str(i)*i)
