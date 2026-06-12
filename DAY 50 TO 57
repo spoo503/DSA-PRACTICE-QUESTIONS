@@ -197,5 +197,76 @@ print(dsecending_array([100,90,80,70,60]))
 #l=0,h=4,m=2--
 #l=3,h=4,m=3--
 #l=4,h=4,m=4--
-
+______________________________PAINTER'S PARTITION________________________________
+def is_possible_sol(a,b,m):
+    painters=1
+    pbc=0
+    for i in a:
+        if i>m:
+             return False
+        if pbc+i<=m:
+             pbc+=i
+        elif painters>b:
+            return False
+        else:
+            painters+=1
+            pbc=i
+    return True
+def max_boards(a,b):
+    if b>len(a):
+        return False
+    l=max(a)
+    h=sum(a)
+    while(l<=h):
+        m=(l+h)//2
+        if is_possible_sol(a,b,m)==True:
+            res=m
+            h=m-1
+        else:
+            l=m+1
+    return res
+def main():
+    a=[12,23,45,67]
+    b=2
+    print(max_boards(a,b))
+if __name__=='__main__':
+    main()
+________________________ALLOCATE BOOKS___________________________
+def is_possible_sol(a,target):
+    students=1
+    spc=0
+    for i in a:
+        if i>m:
+            return False
+        if spc+i<=m:
+            spc+=i
+        elif b>students:
+            return False
+        students+=1
+        spc=i
+    return True
+def max_pages(a,m,b):
+    if b>len(a):
+        return False
+    l=min(a)
+    h=sum(a)
+    res=-1
+    while(l<=h):
+        m=(l+h)//2
+        if is_possible_sol(a,m,b)==True:
+            res=m
+            h=m-1
+        else:
+            l=m+1
+        return res
+def main():
+    a=[12,23,67,90]
+    b=2
+    print(max_page(a,b))
+if__name__=='__main__':
+    main()
+        
+            
+    
+        
 
