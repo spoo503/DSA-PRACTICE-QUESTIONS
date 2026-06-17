@@ -1,0 +1,361 @@
+)
+
+🔵 Linear Search
+
+1.Given [4,7,2,9,1], search for 9. Return index.
+class Solution:
+    def linear_search(self,arr):
+        key=9
+        for i in range(0,len(arr)):
+            if arr[i]==key:
+                return i
+        return -1
+s=Solution()
+print(s.linear_search([4,7,2,9,1]))
+
+2.Find ALL positions of 3 in [3,1,3,5,3].
+class Solution:
+    def all_position(self,arr):
+        key=3
+        res=[]
+        for i in range(0,len(arr)):
+            if key==arr[i]:
+                 res.append(i)
+        return res
+s=Solution()
+print(s.all_position([3,1,3,5,3]))
+#1
+#
+                
+3.Search in a 2D matrix [[1,2],[3,4]] for element 3. Return (row, col).
+class Solution:
+    def all_position(self,arr[i][j]): #u cannot use i,j in indexing parameter so arr
+        key=3
+        i,j=0,0
+        res=[]
+        for i in range(0,len(arr)):
+            for j in range(i,len(arr)):#nner loop should go from 0 to len(arr[i]) (columns), not from i. Starting from i skips cells.
+                if key==arr[i][j]:
+                    res.append(i,j)
+        return res
+s=Solution()
+print(s.all_position([[1,2],[3,4]]))
+correct version:
+class Solution:
+    def all_position(self, arr):        # fix 1
+        key = 3
+        res = []
+        for i in range(len(arr)):
+            for j in range(len(arr[i])):   # fix 2
+                if key == arr[i][j]:
+                    res.append((i, j))     # fix 3
+        return res                         # fix 4
+
+s = Solution()
+print(s.all_position([[1, 2], [3, 4]]))
+# Output: [(1, 0)]
+
+
+🔵 Span of Array
+
+1.Find span of [6,3,4,5,2] — span = max - min.
+class Solution:
+    def span_array(self, arr):
+        maximum = arr[0]   # start with first element
+        minimum = arr[0]
+
+        for i in range(1, len(arr)):  # check ALL elements
+            if arr[i] > maximum:
+                maximum = arr[i]
+            elif arr[i] < minimum:
+                minimum = arr[i]
+
+        return maximum - minimum
+
+s = Solution()
+print(s.span_array([6, 3, 4, 5, 2]))
+# Output: 4  (6 - 2)
+2.Given stock prices [100,80,60,70,60,75,85], find span of each day (how many consecutive days price was ≤ today).
+def second_largest(a):
+    if a[0] > a[1]:
+        max1, max2 = a[0], a[1]
+    else:
+        max1, max2 = a[1], a[0]
+
+    for i in range(2, len(a)):
+        if a[i] > max1:
+            max2 = max1 #this indicates that max2 value remain same and max1 values changes
+            max1 = a[i]
+        elif a[i] > max2 and a[i] != max1:
+            max2 = a[i]
+
+    return max2
+
+print(second_largest([10, 20, 4, 45, 99]))
+# Output: 45 
+
+
+
+🔵 Binary Search
+
+Search 7 in [1,3,5,7,9,11]. Return index.
+class Solution:
+    def binary_search(self,arr):
+        l,h,m=0,len(arr)-1,0
+        target=7
+        while(l<=h):
+            m=(l+h)//2
+            if arr[m]==target:
+                return m
+            elif target<arr[m]:
+                h=m-1
+            else:
+                l=m+1
+        return -1
+s=Solution()
+print(s.binary_search([1,3,5,7,9,11]))
+        
+Find first occurrence of 5 in [1,3,5,5,5,7].
+class SOlution:
+    def first_occ(self,arr):
+        l,h,m=0,len(arr)-1,0
+        res=0
+        target=5
+        while(l<=h):
+            m=(l+h)//2
+            if target==arr[m]:
+                res=m
+                h=m-1
+            elif target<arr[m]:
+                h=m-1
+            else:
+                l=m+1
+        return res
+s=SOlution()
+print(s.first_occ([1,3,5,5,5,7]))
+#l=0,h=5,m=2---
+#l=0,h=1,m=0---
+#l=1,h=1,m=1----
+#l=2---out of the loop
+
+Find last occurrence of 5 in [1,3,5,5,5,7].
+class SOlution:
+    def first_occ(self,arr):
+        l,h,m=0,len(arr)-1,0
+        res=0
+        target=5
+        while(l<=h):
+            m=(l+h)//2
+            if target==arr[m]:
+                res=m
+                l=m+1
+            elif target<arr[m]:
+                h=m-1
+            else:
+                h=m-1
+        return res
+s=SOlution()
+print(s.first_occ([1,3,5,5,5,7]))
+#l=0,h=5,m=2---
+#l=0,h=1,m=0---
+#l=1,h=1,m=1----
+#l=2---out of the loop
+
+Count occurrences of 5 using binary search (no loop counting).
+class SOlution:
+    def first_occ(self,arr):
+        l,h,m=0,len(arr)-1,0
+        res=[-1,-1]
+        target=5
+        while(l<=h):
+            m=(l+h)//2
+            if target==arr[m]:
+                res[0]=m
+                h=m-1
+            elif target<arr[m]:
+                h=m-1
+            else:
+                l=m+1
+        l,h,m=0,len(arr)-1,0
+        target=5
+        while(l<=h):
+            m=(l+h)//2
+            if target==arr[m]:
+                res[1]=m
+                l=m+1
+            elif target<arr[m]:
+                h=m-1
+            else:
+                h=m-1
+        return res[1]-res[0]-1
+s=SOlution()
+print(s.first_occ([1,3,5,5,5,7]))
+
+Binary search on [2,4,6,8,10] — find index of 5, return -1 if not found.
+class Solution:
+    def found_element(self,arr):
+        l,h,m=0,len(arr)-1,0
+        target=5
+        while(l<=h):
+            m=(l+h)//2
+            if  target==arr[m]:
+                return m
+            elif target<arr[m]:
+                h=m-1
+            else:
+                l=m+1
+        return -1
+s=Solution()
+print(s.found_element([2,4,6,8,10]))
+
+
+🔵 Second Largest
+
+Find second largest in [10,20,4,45,99].
+class Solution:
+    def second_largest(self,arr):
+        max1=0
+        max2=0
+        if arr[0]>arr[1]:
+           max1,max2= arr[0],arr[1]
+        else:
+                max2,max1=arr[0],arr[1]
+        for i in range(2,len(arr)):
+            if arr[i]>max1:
+                max2=max1 # save first
+                max1=arr[i]  # then update
+            elif arr[i]>max2:
+                max2=arr[i]
+        return max2
+s=Solution()
+print(s.second_largest([2,4,6,8,10]))
+
+What if all elements are same — [5,5,5]? Handle this edge case.
+same it does not give error as we wrote return max2 so whatever it it return output as 5
+Python never raises errors automatically for logic mistakes — only for syntax/runtime issues.
+If you want validation, you have to write it yourself.
+✅You said: but cso max1=5, max2=5 how is it possible
+
+
+Find second largest without sorting.the else part runs blindly.
+# O(n), no sorting, one pass
+if arr[i] > max1:
+    max2 = max1
+    max1 = arr[i]
+elif arr[i] > max2:
+    max2 = arr[i]
+
+
+🔵 Ceil and Floor (Sorted Array)
+
+Floor of 6 in [1,3,5,7,9] → answer is 5.
+Ceil of 6 in [1,3,5,7,9] → answer is 7.
+Floor of 10 in [1,3,5,7,9] → what happens?
+Ceil of 0 in [1,3,5,7,9] → what happens?
+
+
+🔵 Bitonic Array
+
+Find peak element in [1,3,8,12,4,2].
+Search 3 in bitonic array [1,3,8,12,4,2].
+Is [1,2,3,2,1] bitonic? Write a checker.
+
+
+🔵 Count Smaller and Equal Elements
+
+In [1,2,3,4,5], count elements ≤ 3.
+In [5,5,5,5], count elements ≤ 5.
+In unsorted [4,1,7,2,9], count elements < 5.
+
+
+🔵 First and Last Position
+
+First and last position of 5 in [1,5,5,5,9].
+First and last position of 7 in [1,3,5,9] — element not present.
+
+
+🔵 Search in Rotated Array
+
+Search 4 in [6,7,1,2,3,4,5].
+Search 0 in [3,4,5,1,2] — not present.
+Find minimum element in [4,5,6,7,0,1,2].
+
+
+🔵 Wood Cutting
+
+Logs: [20,15,10,17], need 7 units. Find max height H of saw.
+What if required length is more than total wood — what do you return?
+
+
+🔵 Median of Two Sorted Arrays
+
+Median of [1,3] and [2].
+Median of [1,2] and [3,4].
+
+
+🔵 Allocate Books
+
+Books [12,34,67,90], 2 students. Minimize max pages allocated.
+What if students > books — is it possible?
+
+
+🔵 Painter's Partition
+
+Boards [10,20,30,40], 2 painters, each paints consecutive boards. Minimize time.
+
+
+🔵 Minimum Days to Make Bouquets
+
+bloomDay=[1,10,3,10,2], m=3 bouquets, k=1 flower each. Min days?
+m=3, k=2, same array — possible?
+
+
+🔵 Check Sorted
+
+Is [1,2,2,3,4] sorted? (handle duplicates)
+Is [] sorted? Edge case.
+Is [5] sorted? Edge case.
+
+
+🔵 Reverse Array
+
+Reverse [1,2,3,4,5] in-place.
+Reverse only from index 1 to 3 in [1,2,3,4,5].
+
+
+🔵 Square Root
+
+sqrt(25) → 5. sqrt(26) → 5 (floor). No built-in allowed.
+sqrt(0) and sqrt(1) — edge cases.
+
+
+🔵 Remove Duplicates
+
+Remove duplicates from [1,1,2,3,3,4] in-place. Return new length.
+What's the array after removal (first k elements)?
+
+
+🔵 Rotate Array
+
+Rotate [1,2,3,4,5] by 2 to the right → [4,5,1,2,3].
+Rotate by 0 and rotate by len(arr) — what happens?
+
+
+🔵 Move Zeros
+
+Move zeros in [0,1,0,3,12] → [1,3,12,0,0]. Order preserved.
+All zeros [0,0,0] — output?
+No zeros [1,2,3] — output?
+
+
+🔵 Subarray
+
+Print all subarrays of [1,2,3].
+Count total number of subarrays in array of size n. (formula based)
+Find subarray with maximum sum in [1,-2,3,4,-1].
+
+
+LeetCode Problems (Day 1–21)
+#ProblemTopic704Binary SearchBinary Search34First and Last PositionBinary Search33Search in Rotated ArrayRotated Array153Minimum in Rotated ArrayRotated Array69Sqrt(x)Square Root26Remove DuplicatesRemove Duplicates189Rotate ArrayRotate283Move ZeroesMove Zeros53Maximum SubarraySubarray1011Capacity to Ship PackagesWood Cutting / BS on answer875Koko Eating BananasBS on answer1482Minimum Days to Make BouquetsBouquets4Median of Two Sorted ArraysMedian162Find Peak ElementBitonic852Peak Index in Mountain ArrayBitonic
+
+Start solving your own questions first without looking anything up. Then move to LeetCode. That's the real test. 💪
