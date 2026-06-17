@@ -65,3 +65,18 @@ Do these in order:
 8. LeetCode 1482  (Minimum Days to Make m Bouquets)
 9. LeetCode 1552  (Aggressive Cows Equivalent)
 10. LeetCode 410  (Split Array Largest Sum)
+11. Binary SearchBinary Search
+12. 34First and Last PositionBinary Search
+13. 33Search in Rotated ArrayRotated Array
+14. 153Minimum in Rotated ArrayRotated Array
+15. 69Sqrt(x)Square Root
+16. 26Remove DuplicatesRemove Duplicates
+17. 189Rotate ArrayRotate
+18. 283Move ZeroesMove Zeros
+19. 53Maximum SubarraySubarray
+20. 1011Capacity to Ship PackagesWood Cutting / BS on answer
+21. 875Koko Eating BananasBS on answer
+22. 1482Minimum Days to Make BouquetsBouquets
+23. 4Median of Two Sorted ArraysMedian
+24. 162Find Peak ElementBitonic
+25. 852Peak Index in Mountain ArrayBitonic
