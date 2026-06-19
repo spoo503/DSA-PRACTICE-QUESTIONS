@@ -249,37 +249,259 @@ elif arr[i] > max2:
 🔵 Ceil and Floor (Sorted Array)
 
 Floor of 6 in [1,3,5,7,9] → answer is 5.
+class Solution:
+    def F(self,num):
+        l,h,m=0,len(num)-1,0
+        target=6
+        res=0
+        while(l<=h):
+            m=(l+h)//2
+            if target==num[m]:
+                return m
+            elif target<num[m]:
+                h=m-1
+            elif target>num[m]:
+                res=m
+                l=m+1
+        return num[res]
+s=Solution()
+print(s.F([1,3,5,7,9]))
+#l=0,h=4,m=2---5
+#l=3,h=4,m=3---
+#l=3,h=2----out of the loop
 Ceil of 6 in [1,3,5,7,9] → answer is 7.
+class Solution:
+    def ceil(self,num):
+        l,h,m=0,len(num)-1,0
+        target=6
+        res=0
+        while(l<=h):
+            m=(l+h)//2
+            if target==num[m]:
+                return m
+            elif target<num[m]:
+                res=m
+                h=m-1
+            else:
+                l=m+1
+        return num[res]
+s=Solution()
+print(s.ceil([1,3,5,7,9]))
+#l=0,h=4,m=2----
+#l=3,h=4,m=3---
 Floor of 10 in [1,3,5,7,9] → what happens?
+class Solution:
+    def F(self,num):
+        l,h,m=0,len(num)-1,0
+        target=10
+        res=0
+        while(l<=h):
+            m=(l+h)//2
+            if target==num[m]:
+                return m
+            elif target<num[m]:
+                h=m-1
+            elif target>num[m]:
+                res=m
+                l=m+1
+        return num[res]
+s=Solution()
+print(s.F([1,3,5,7,9]))
 Ceil of 0 in [1,3,5,7,9] → what happens?
+class Solution:
+    def ceil(self,num):
+        l,h,m=0,len(num)-1,0
+        target=6
+        res=0
+        while(l<=h):
+            m=(l+h)//2
+            if target==num[m]:
+                return m
+            elif target<num[m]:
+                res=m
+                h=m-1
+            else:
+                l=m+1
+        return num[res]
+s=Solution()
+print(s.ceil([1,3,5,7,9]))
 
 
 🔵 Bitonic Array
 
 Find peak element in [1,3,8,12,4,2].
-Search 3 in bitonic array [1,3,8,12,4,2].
+class Solution:
+    def bitonic_array(self,a):
+        for i in range(0,len(a)-1):   #So range(1, len(a)-1) means start at 1, stop at second-last —
+exactly where both neighbours are guaranteed to exist! ✅
+            if a[i]>a[i+1] and a[i]>a[i-1]:
+                return a[i]
+s=Solution()
+print(s.bitonic_array([1,3,8,12,4,2]))
+ IMP Search 3 in bitonic array [1,3,8,12,4,2].
 Is [1,2,3,2,1] bitonic? Write a checker.
+
+Logic to Check
+A valid bitonic array must have exactly 3 phases in order:
+Phase 1 → strictly INCREASING
+Phase 2 → one PEAK
+Phase 3 → strictly DECREASING
+Think of it as 3 steps in code
+Step 1 → walk forward while increasing
+Step 2 → check if we reached a peak (not start, not end)
+Step 3 → walk forward while decreasing
+Step 4 → if we reached end → bitonic ✅
+IMPORTANT SOLVE
 
 
 🔵 Count Smaller and Equal Elements
 
 In [1,2,3,4,5], count elements ≤ 3.
+
+class Solution:
+    def count_element(self,num):
+        l,h,m=0,len(num)-1 ,0
+        target=3
+        res=0
+        while(l<=h):
+            m=(l+h)//2
+            if target<=num[m]:
+                res=m
+                l=m+1
+            else :
+                h=m-1
+        return res +1
+s=Solution()
+print(s.count_element([1,2,3,4,5]))
+#l=0,h=4,m=2---- res=2
+#l=3,h=4,m=3---
+#l=3,h=3,m=3---
+#l=3,h=2 ---out of the loop
+IMPORTANT NOTE:
+Keep moving right as long as num[m] <= target, and save that index in res."
+"Whatever index you land on last, add 1 — because that's how many elements
+exist from 0 to that index." so logic is like if the target is less than that u store another varaible and that index+1 will 
+be that many of elements less than like indirect count
+
+
+
 In [5,5,5,5], count elements ≤ 5.
+class Solution:
+    def count_element(self, num):
+        l, h = 0, len(num)-1
+        target = 5
+        res = -1
+
+        while l <= h:
+            m = (l + h) // 2
+            if num[m] <= target:   # ✅ include equal too
+                res = m            # save this position
+                l = m + 1          # try to go further right
+            else:
+                h = m - 1          # too big, go left
+
+        return res + 1             # index + 1 = count
+
+s = Solution()
+print(s.count_element([5,5,5,5,5])) # Output: 5 ✅
+#l=0,h=4,m=2.
+#l=3,h=4,m=3
+#l=4,h=4,m=4
+
 In unsorted [4,1,7,2,9], count elements < 5.
+class Solution:
+    def unsorted_Array(self,num):
+        res=0
+        target=5
+        for i in range(0,len(num)):
+            if num[i]<=target:
+                res+=1
+        return res
+s=Solution()
+print(s.unsorted_Array([4,1,7,2,9]))
 
 
 🔵 First and Last Position
 
 First and last position of 5 in [1,5,5,5,9].
+class Solution:
+    def first_position(self,num):
+        l,h,m=0,len(num)-1,0
+        target=5
+        res=-1
+        while(l<=h):
+            m=(l+h)//2
+            if num[m]==target:
+                res=m
+                h=m-1
+            elif target<num[m]:
+                h=m-1
+            else:
+                l=m+1
+        return res
+s=Solution()
+print(s.first_position([1,5,5,5,9]))
+#l=0,h=4,m=2----
 First and last position of 7 in [1,3,5,9] — element not present.
+class Solution:
+    def first_position(self,num):
+        l,h,m=0,len(num)-1,0
+        target=5
+        res=-1
+        while(l<=h):
+            m=(l+h)//2
+            if num[m]==target:
+                res=m
+                l=m+1
+            elif target<num[m]:
+                h=m-1
+            else:
+               l=m+1
+        return res
+s=Solution()
+print(s.first_position([1,5,5,5,9]))
+#l=0,h=4,m=2----
 
 
 🔵 Search in Rotated Array
 
 Search 4 in [6,7,1,2,3,4,5].
-Search 0 in [3,4,5,1,2] — not present.
-Find minimum element in [4,5,6,7,0,1,2].
+class Solution:
+    def rotate_array(self,num):
+        l,h,m=0,len(num)-1,0
+        target=4
+        while(l<=h):
+            m=(l+h)//2
+            if target==num[m]:
+                return m
+            elif num[l]<=num[m]:
+                if target>=num[l] and target<num[m]:
+                    h=m-1
+                else:
+                    l=m+1
+            else:
+                if target<num[h] and target>=num[m]:
+                    l=m+1
+                else:
+                    h=m-1
+        return -1
+s=Solution()
+print(s.rotate_array([6,71,2,3,4,5]))
 
+Search 0 in [3,4,5,1,2] — not present.
+it returns -1
+
+Find minimum element in [4,5,6,7,0,1,2].
+class Solution:
+    def min_element(self,num):
+        min=num[0]
+        for i in range(0,len(num)):
+            if num[i]<min:
+                min=num[i]
+        return min
+s=Solution()
+print(s.min_element([4,5,6,7,0,1,2]))
+        
 
 🔵 Wood Cutting
 
