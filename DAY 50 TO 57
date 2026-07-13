@@ -10,18 +10,21 @@ __________________________SECOND LARGEST ELEMENT________________________________
 def second_largest_element(arr):
     max1,max2=0,1
     if arr[0]>arr[1]:
-        max1,max2= arr[0],arr[1]
+        max1,max2= arr[0],arr[1]  # here we are adding the value to max 
     else:
         max1,max2=arr[1],arr[2]
     for i in range(2,len(arr)):
         if arr[i]>max1:
-            max1=max2
+            max1=max2  #here the max value is replaced to max2
             max2=arr[i]
             return max2
         elif arr[i]> max2:
             return max2
     return -1
 print(second_largest_element([10,20,4,45,99]))
+Memory aid: "Save the old value into its new home BEFORE you overwrite the variable — once overwritten,
+that old value is gone for good."
+
 _________________________________largest element________________________________________
 def largest_element(a):
     for i in range(len(a)):
