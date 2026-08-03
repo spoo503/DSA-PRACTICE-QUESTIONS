@@ -182,6 +182,20 @@ Given an integer n. You need to recreate the pattern given below for any value o
 
 55555
 class Solution:
+    def pattern4(self, n):
+        for i in range(1,n+1):
+            print(str(i)*i)
+class Solution:
+    def largest_Array(self, arr):
+        larg = arr[0]
+        for i in range(1, len(arr)):      # fix 1: stop at len(arr), not len(arr)+1
+            if arr[i] > larg:
+                larg = arr[i]              # fix 2: return moved OUT of the loop entirely
+        return larg                        # fix 3: return the answer, not False
+
+s = Solution()
+print(s.largest_Array([12, 23, 44, 56]))
+class Solution:
     def second_largest(self,arr):
         Max=arr[0]
         Max1=arr[1]
@@ -201,10 +215,39 @@ print(s.second_largest([12,23,35,56]))
 #Max=23,Max1=12
 # 
             
-            
-
-
+   check whether the array is sorted or not         
 class Solution:
-    def pattern4(self, n):
-        for i in range(1,n+1):
-            print(str(i)*i)
+    def is_sorted_ascending(self, arr):
+        for i in range(len(arr) - 1):
+            if arr[i] > arr[i+1]:
+                return False
+        return True
+
+    def is_sorted_descending(self, arr):
+        for i in range(len(arr) - 1):
+            if arr[i] < arr[i+1]:
+                return False
+        return True
+
+    def is_sorted(self, arr):
+        # sorted in EITHER direction counts
+        return self.is_sorted_ascending(arr) or self.is_sorted_descending(arr)
+
+    def sort_array(self, arr, order="asc"):
+        # simple, readable bubble sort — not the fastest, but easy to trace
+        n = len(arr)
+        for i in range(n):
+            for j in range(0, n - i - 1):
+                if order == "asc" and arr[j] > arr[j+1]:
+                    arr[j], arr[j+1] = arr[j+1], arr[j]
+                elif order == "desc" and arr[j] < arr[j+1]:
+                    arr[j], arr[j+1] = arr[j+1], arr[j]
+        return arr
+
+
+s = Solution()
+print(s.is_sorted([1, 2, 3]))          # ascending
+print(s.is_sorted([5, 3, 1]))          # descending
+print(s.is_sorted([7]))                # single element
+print(s.sort_array([5, 1, 4, 2], "asc"))
+print(s.sort_array([5, 1, 4, 2], "desc"))
