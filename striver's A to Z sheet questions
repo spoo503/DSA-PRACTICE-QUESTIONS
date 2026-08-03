@@ -181,6 +181,27 @@ Given an integer n. You need to recreate the pattern given below for any value o
 4444
 
 55555
+class Solution:
+    def second_largest(self,arr):
+        Max=arr[0]
+        Max1=arr[1]
+        if Max>Max1:
+            Max,Max1=arr[0],arr[1]
+        else:
+            Max,Max1=arr[1],arr[0]
+        for i in range(2,len(arr)):
+            if arr[i]>Max:
+                Max=Max1
+                Max=arr[i]
+            return Max
+        return Max1
+s=Solution()
+print(s.second_largest([12,23,35,56]))
+#Max=12,Max1=23
+#Max=23,Max1=12
+# 
+            
+            
 
 
 class Solution:
