@@ -1,4 +1,4 @@
-######1.Two Sum
+########1.Two Sum
 class Solution:
     def two_sum(self,a):
         target=9
