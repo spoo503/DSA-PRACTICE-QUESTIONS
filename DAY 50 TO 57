@@ -6,7 +6,7 @@
             return i
     return -1
 print(linear_search([12,34,1,56,78]))
-__________________________SECOND LARGEST ELEMENT_______________________________________
+_##_________________________SECOND LARGEST ELEMENT_______________________________________
 def second_largest_element(arr):
     max1,max2=0,1
     if arr[0]>arr[1]:
